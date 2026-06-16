@@ -47,3 +47,29 @@ export async function getMovieDetails(id) {
 
   return data;
 }
+
+export async function getGenres() {
+  const response = await fetch(
+    `${BASE_URL}/genre/movie/list`,
+    {
+      headers
+    }
+  );
+
+  const data = await response.json();
+
+  return data.genres;
+}
+
+export async function getMoviesByGenre(id) {
+  const response = await fetch(
+    `${BASE_URL}/discover/movie?with_genres=${id}`,
+    {
+      headers
+    }
+  );
+
+  const data = await response.json();
+
+  return data.results;
+}

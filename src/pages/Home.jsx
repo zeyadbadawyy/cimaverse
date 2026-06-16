@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import MovieGrid from "../components/MovieGrid";
+import GenreFilter from "../components/GenreFilter";
 
 import {
   getTrendingMovies,
-  searchMovies
+  searchMovies,
+  getGenres,
+  getMoviesByGenre
 } from "../services/tmdb";
 
 function Home() {
@@ -22,8 +25,15 @@ function Home() {
   const [searchMode, setSearchMode] =
     useState(false);
 
+  const [genres, setGenres] = 
+    useState([]);
+  
+  const [selectedGenre, setSelectedGenre] = 
+    useState(null);
+
   useEffect(() => {
     loadTrending();
+    loadGenres();
   }, []);
 
   async function loadTrending() {
@@ -47,7 +57,7 @@ function Home() {
       loadTrending();
       return;
     }
-
+    setSelectedGenre(null);
     setLoading(true);
 
     try {
@@ -63,6 +73,29 @@ function Home() {
     setLoading(false);
   }
 
+  async function loadGenres() {
+    const data =
+      await getGenres();
+
+    setGenres(data);
+  }
+
+  async function handleGenreSelect(genreId) {
+    setSelectedGenre(genreId);
+    setSearchMode(false);
+
+    if (genreId === null) {
+      loadTrending();
+      return;
+    }
+
+    const movies =
+      await getMoviesByGenre(
+        genreId
+      );
+
+    setMovies(movies);
+  }
   return (
     <>
       <Navbar />
@@ -88,9 +121,17 @@ function Home() {
       <section className="content">
         <h2>
           {searchMode
-            ? `Search Results`
-            : `🔥 Trending Movies`}
+            ? "Search Results"
+            : "🔥 Trending Movies"}
         </h2>
+
+        <GenreFilter
+          genres={genres}
+          selectedGenre={selectedGenre}
+          onSelectGenre={
+            handleGenreSelect
+          }
+        />
 
         {loading ? (
           <h3>Loading...</h3>

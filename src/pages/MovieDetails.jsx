@@ -17,18 +17,34 @@ import {
   isFavorite
 } from "../utils/favorites";
 
+
+
 function MovieDetails() {
   const { id } = useParams();
+
+  const [favorite, setFavorite] =
+    useState(false);
 
   const [movie, setMovie] =
     useState(null);
 
+  function toggleFavorite() {
+    if (favorite) {
+      removeFavorite(movie.id);
+      setFavorite(false);
+    } else {
+      addFavorite(movie);
+      setFavorite(true);
+    }
+  }
+  
   useEffect(() => {
     async function loadMovie() {
       const data =
         await getMovieDetails(id);
 
       setMovie(data);
+      setFavorite(isFavorite(data.id));
     }
 
     loadMovie();
@@ -69,6 +85,14 @@ function MovieDetails() {
               ⭐ {movie.vote_average}
             </p>
 
+            <button
+              className="favorite-btn"
+              onClick={toggleFavorite}
+            >
+              {favorite
+                ? "❤️ Remove Favorite"
+                : "🤍 Add Favorite"}
+            </button>
             <p>
               📅 {movie.release_date}
             </p>

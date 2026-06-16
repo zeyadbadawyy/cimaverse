@@ -1,4 +1,5 @@
 import { FaFilm } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -9,8 +10,11 @@ function Navbar() {
       </div>
 
       <div className="nav-links">
-        <span>Home</span>
-        <span>Favorites</span>
+        <Link to="/">Home</Link>
+
+        <Link to="/favorites">
+          Favorites ❤️
+        </Link>
       </div>
     </nav>
   );
