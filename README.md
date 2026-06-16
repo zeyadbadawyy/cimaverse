@@ -1,22 +1,89 @@
 # 🎬 CimaVerse
 
-A modern movie discovery platform built with React and TMDB.
+Modern movie discovery platform built with React and powered by TMDB.
 
-## Features
+---
 
-- Trending Movies
-- Movie Search
-- Movie Details Pages
-- Favorites System
-- Responsive UI
+## 🌐 Live Demo
 
-## Tech Stack
+https://zeyadbadawyy.github.io/cimaverse
+
+---
+
+## ✨ Features
+
+- 🔎 Search Movies
+- 🎥 Movie Details
+- ❤️ Favorites System
+- 🎭 Genre Filtering
+- 🔥 Trending Movies
+- 🍿 Popular Movies
+- ⭐ Top Rated Movies
+- 🎬 Now Playing
+- ▶ Watch Trailers
+
+---
+
+## 🛠 Tech Stack
 
 - React
-- Vite
-- TMDB API
 - React Router
+- TMDB API
+- JavaScript
+- CSS3
 
-## Status
+---
 
-🚧 In Active Development
+## 📸 Screenshots
+
+### Homepage
+
+![Homepage](assets/screenshots/homepage.png)
+
+---
+
+### Movie Details
+
+![Movie Details](assets/screenshots/moviedetails.png)
+
+---
+
+### Favorites
+
+![Favorites](assets/screenshots/favoritespage.png)
+
+---
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/zeyadbadawyy/cimaverse.git
+
+cd cimaverse
+
+npm install
+
+npm run dev
+```
+
+---
+
+## 🔮 Future Improvements
+
+- AI-powered movie recommendations
+- User watchlists & profiles
+- Infinite scrolling and pagination
+
+---
+
+## 📄 Attribution
+
+This product uses the TMDB API but is not endorsed or certified by TMDB.
+
+---
+
+## 👨‍💻 Author
+
+**Zeyad Badawy**
+
+Full-Stack Developer | Software Engineer
