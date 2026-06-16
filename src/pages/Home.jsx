@@ -7,6 +7,9 @@ import GenreFilter from "../components/GenreFilter";
 
 import {
   getTrendingMovies,
+  getPopularMovies,
+  getTopRatedMovies,
+  getNowPlayingMovies,
   searchMovies,
   getGenres,
   getMoviesByGenre
@@ -30,6 +33,9 @@ function Home() {
   
   const [selectedGenre, setSelectedGenre] = 
     useState(null);
+
+  const [activeTab, setActiveTab] =
+    useState("trending"); 
 
   useEffect(() => {
     loadTrending();
@@ -96,6 +102,46 @@ function Home() {
 
     setMovies(movies);
   }
+
+  async function handleTabChange(tab) {
+    setActiveTab(tab);
+
+    setLoading(true);
+
+    try {
+      let data = [];
+
+      switch (tab) {
+        case "popular":
+          data =
+            await getPopularMovies();
+          break;
+
+        case "top":
+          data =
+            await getTopRatedMovies();
+          break;
+
+        case "now":
+          data =
+            await getNowPlayingMovies();
+          break;
+
+        default:
+          data =
+            await getTrendingMovies();
+      }
+
+      setMovies(data);
+      setSearchMode(false);
+      setSelectedGenre(null);
+
+    } catch (error) {
+      console.error(error);
+    }
+
+    setLoading(false);
+  }
   return (
     <>
       <Navbar />
@@ -124,7 +170,39 @@ function Home() {
             ? "Search Results"
             : "🔥 Trending Movies"}
         </h2>
+        <div className="movie-tabs">
+          <button
+            onClick={() =>
+              handleTabChange("trending")
+            }
+          >
+            🔥 Trending
+          </button>
 
+          <button
+            onClick={() =>
+              handleTabChange("popular")
+            }
+          >
+            🍿 Popular
+          </button>
+
+          <button
+            onClick={() =>
+              handleTabChange("top")
+            }
+          >
+            ⭐ Top Rated
+          </button>
+
+          <button
+            onClick={() =>
+              handleTabChange("now")
+            }
+          >
+            🎬 Now Playing
+          </button>
+        </div>
         <GenreFilter
           genres={genres}
           selectedGenre={selectedGenre}
