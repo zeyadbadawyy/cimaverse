@@ -25,9 +25,13 @@ function Favorites() {
         </h1>
 
         {movies.length === 0 ? (
-          <h3>
-            No favorites yet.
-          </h3>
+         <div className="empty-state">
+          <h2>❤️ No favorites yet</h2>
+          <p>
+            Start exploring movies and save
+            your favorites here.
+          </p>
+        </div>
         ) : (
           <MovieGrid movies={movies} />
         )}

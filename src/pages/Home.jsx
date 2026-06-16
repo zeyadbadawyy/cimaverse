@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import MovieGrid from "../components/MovieGrid";
 import GenreFilter from "../components/GenreFilter";
+import Footer from "../components/Footer";
 
 import {
   getTrendingMovies,
@@ -167,11 +168,22 @@ function Home() {
       <section className="content">
         <h2>
           {searchMode
-            ? "Search Results"
-            : "🔥 Trending Movies"}
+            ? `🔎 Search Results for "${query}"`
+            : activeTab === "popular"
+            ? `🍿 Popular Movies`
+            : activeTab === "top"
+            ? `⭐ Top Rated Movies`
+            : activeTab === "now"
+            ? `🎬 Now Playing`
+            : `🔥 Trending Movies`}
         </h2>
         <div className="movie-tabs">
           <button
+            className={
+              activeTab === "trending"
+                ? "active"
+                : ""
+            }
             onClick={() =>
               handleTabChange("trending")
             }
@@ -180,6 +192,11 @@ function Home() {
           </button>
 
           <button
+            className={
+              activeTab === "popular"
+                ? "active"
+                : ""
+            } 
             onClick={() =>
               handleTabChange("popular")
             }
@@ -188,6 +205,11 @@ function Home() {
           </button>
 
           <button
+            className={
+              activeTab === "top"
+                ? "active"
+                : ""
+            }
             onClick={() =>
               handleTabChange("top")
             }
@@ -196,6 +218,11 @@ function Home() {
           </button>
 
           <button
+            className={
+              activeTab === "now"
+                ? "active"
+                : ""
+            }
             onClick={() =>
               handleTabChange("now")
             }
@@ -219,6 +246,7 @@ function Home() {
           <MovieGrid movies={movies} />
         )}
       </section>
+      <Footer />
     </>
   );
 }

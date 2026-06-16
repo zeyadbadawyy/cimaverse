@@ -13,7 +13,7 @@ function Navbar() {
         <Link to="/">Home</Link>
 
         <Link to="/favorites">
-          Favorites ❤️
+          Favorites
         </Link>
       </div>
     </nav>

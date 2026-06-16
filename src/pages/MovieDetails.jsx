@@ -8,7 +8,8 @@ import {
 } from "react";
 
 import {
-  getMovieDetails
+  getMovieDetails,
+  getMovieVideos
 } from "../services/tmdb";
 
 import {
@@ -28,6 +29,9 @@ function MovieDetails() {
   const [movie, setMovie] =
     useState(null);
 
+  const [trailer, setTrailer] =
+    useState(null);
+
   function toggleFavorite() {
     if (favorite) {
       removeFavorite(movie.id);
@@ -43,8 +47,22 @@ function MovieDetails() {
       const data =
         await getMovieDetails(id);
 
+      const videos =
+        await getMovieVideos(id);
+
+      const trailerVideo =
+        videos.find(
+          (video) =>
+            video.type === "Trailer" &&
+            video.site === "YouTube"
+        );
+
       setMovie(data);
       setFavorite(isFavorite(data.id));
+
+      if (trailerVideo) {
+        setTrailer(trailerVideo.key);
+      }
     }
 
     loadMovie();
@@ -93,6 +111,19 @@ function MovieDetails() {
                 ? "❤️ Remove Favorite"
                 : "🤍 Add Favorite"}
             </button>
+            {trailer && (
+              <a
+                href={`https://www.youtube.com/watch?v=${trailer}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button
+                  className="trailer-btn"
+                >
+                  ▶ Watch Trailer
+                </button>
+              </a>
+            )}
             <p>
               📅 {movie.release_date}
             </p>

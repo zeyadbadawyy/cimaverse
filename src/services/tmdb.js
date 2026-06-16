@@ -106,3 +106,18 @@ export async function getNowPlayingMovies() {
 
   return data.results;
 }
+
+export async function getMovieVideos(
+  movieId
+) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}/videos`,
+    {
+      headers
+    }
+  );
+
+  const data = await response.json();
+
+  return data.results;
+}
