@@ -38,19 +38,13 @@ https://zeyadbadawyy.github.io/cimaverse
 
 ### Homepage
 
-![Homepage](assets/screenshots/homepage.png)
+![Homepage](src/assets/screenshots/homepage.png)
 
 ---
 
 ### Movie Details
 
-![Movie Details](assets/screenshots/moviedetails.png)
-
----
-
-### Favorites
-
-![Favorites](assets/screenshots/favoritespage.png)
+![Movie Details](src/assets/screenshots/moviedetails.png)
 
 ---
 
