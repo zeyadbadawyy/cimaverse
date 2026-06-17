@@ -10,7 +10,7 @@ import Favorites from "./pages/Favorites";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/cimaverse">
       <Routes>
         <Route
           path="/"
