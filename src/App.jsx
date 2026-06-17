@@ -7,7 +7,7 @@ import {
 import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
 import Favorites from "./pages/Favorites";
-
+console.log("App loaded");
 function App() {
   return (
     <HashRouter>
