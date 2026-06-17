@@ -1,5 +1,5 @@
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -10,7 +10,7 @@ import Favorites from "./pages/Favorites";
 
 function App() {
   return (
-    <BrowserRouter basename="/cimaverse">
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -27,7 +27,7 @@ function App() {
           element={<Favorites />}
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
