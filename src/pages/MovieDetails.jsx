@@ -1,5 +1,6 @@
 import {
-  useParams
+  useParams,
+  useNavigate
 } from "react-router-dom";
 
 import {
@@ -22,6 +23,7 @@ import {
 
 function MovieDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [favorite, setFavorite] =
     useState(false);
@@ -82,6 +84,12 @@ function MovieDetails() {
 
   return (
     <div>
+      <button
+        className="close-btn"
+        onClick={() => navigate(-1)}
+      >
+        ✕
+      </button>
       <div
         className="details-hero"
         style={{
@@ -102,7 +110,21 @@ function MovieDetails() {
             <p>
               ⭐ {movie.vote_average}
             </p>
-
+            <div>
+              {trailer && (
+                <a
+                  href={`https://www.youtube.com/watch?v=${trailer}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <button
+                    className="trailer-btn"
+                  >
+                    ▶ Watch Trailer
+                  </button>
+                </a>
+              )}
+            </div>
             <button
               className="favorite-btn"
               onClick={toggleFavorite}
@@ -111,19 +133,7 @@ function MovieDetails() {
                 ? "❤️ Remove Favorite"
                 : "🤍 Add Favorite"}
             </button>
-            {trailer && (
-              <a
-                href={`https://www.youtube.com/watch?v=${trailer}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <button
-                  className="trailer-btn"
-                >
-                  ▶ Watch Trailer
-                </button>
-              </a>
-            )}
+            
             <p>
               📅 {movie.release_date}
             </p>

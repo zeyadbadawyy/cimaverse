@@ -27,6 +27,23 @@ body {
   font-weight: bold;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 240px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.03);
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -171,7 +188,6 @@ body {
 
 .details-poster {
   width: 300px;
-
   border-radius: 16px;
 }
 
@@ -183,7 +199,7 @@ body {
 }
 
 .favorite-btn {
-  margin-top: 20px;
+  margin: 30px 30px 30px 0px;
 
   border: none;
 
@@ -227,7 +243,7 @@ body {
   padding: 12px 22px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   background-color: rgb(227, 223, 155);
 }
 
@@ -272,4 +288,36 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.trailer-btn:hover {
+  transform: scale(1.04);
+  background: rgba(67, 69, 73, 0.9);
+}
+
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(67, 69, 73, 0.9);
+
+  color: white;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.08);
+  background: rgba(83, 85, 89, 0.9);
 }

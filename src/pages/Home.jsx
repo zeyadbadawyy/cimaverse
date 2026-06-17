@@ -66,6 +66,7 @@ function Home() {
     }
     setSelectedGenre(null);
     setLoading(true);
+    setActiveTab(null);
 
     try {
       const data =
@@ -73,6 +74,7 @@ function Home() {
 
       setMovies(data);
       setSearchMode(true);
+      
     } catch (error) {
       console.error(error);
     }

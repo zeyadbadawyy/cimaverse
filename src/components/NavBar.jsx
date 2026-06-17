@@ -1,13 +1,17 @@
 import { FaFilm } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo">
-        <FaFilm />
-        <span>CimaVerse</span>
-      </div>
+     <Link to="/">
+        <img
+          src={logo}
+          alt="CimaVerse"
+          className="logo-image"
+        />
+      </Link>
 
       <div className="nav-links">
         <Link to="/">Home</Link>
